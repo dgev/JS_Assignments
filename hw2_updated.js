@@ -1,3 +1,12 @@
+
+
+
+
+// Problems 1, 2, 3 and 10 are updated
+
+
+
+
 // Problem 1
 
 function isPrime(number) {
