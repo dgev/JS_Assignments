@@ -133,3 +133,60 @@ function newString(str) {
 }
 
 // newString('aweyoolp')
+
+
+// Problem 7
+
+function productOfNums(arr) {
+    let product = 1;
+    let max;
+    let noNegative = false;
+    let noArrays = false;
+    for (let i = 0; i < arr.length; i++) {
+        max = 1;
+        if (Array.isArray(arr[i])) {
+            noArrays = true;
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] < 0) {
+                    max = arr[i][j];
+                    noNegative = true;
+                    for (let index = j + 1; index < arr[i].length; index++) {
+                        if (arr[i][index] < 0 && arr[i][index] > max) {
+                            max = arr[i][index];
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        product *= max;
+    }
+
+    if (!noArrays)
+        console.log('Invalid Argument');
+    else if (!noNegative)
+        console.log('No negatives');
+    else
+        console.log(product);
+}
+
+// productOfNums([[2, -9, -3, 0], [1, 2], [-4 , -11, 0]]);
+
+// Problem 8
+
+function allSubsets(arr) {
+    if (arr.length < 3) {
+        return arr;
+    }
+    let result = [];
+    for (let k = 0; k < arr.length - 2; k++) {
+        for (let i = k + 1; i < arr.length - 1; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                result.push([arr[k], arr[i], arr[j]])
+            }
+        }
+    }
+    return result;
+}
+
+// console.log(allSubsets([5, 9, 23, 0, -2, -1]));
