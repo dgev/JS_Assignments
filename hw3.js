@@ -25,7 +25,7 @@ function frequency(arr) {
     let current = arr[0];
     let count = 0;
     let length = arr.length;
-    arr.forEach( (element, index) => {
+    arr.forEach((element, index) => {
         if (element === current) {
             count++;
         } else {
@@ -68,8 +68,8 @@ function longestWord(sentence) {
     let prev_value = '';
     let count = 0;
     let value = '';
-    for (let i = 0; i < sentence.length; i++) {
-        if ([' ', ',', '-'].includes(sentence[i]) || i === sentence.length - 1) {
+    sentence.split('').forEach((element, index) => {
+        if ([' ', ',', '-'].includes(element) || index === sentence.length - 1) {
             if (prev_count <= count) {
                 prev_value = value;
                 prev_count = count;
@@ -77,9 +77,9 @@ function longestWord(sentence) {
             count = 0;
             value = '';
         }
-        value += sentence[i];
+        value += element;
         count++;
-    }
+    })
     console.log(prev_value);
 }
 
