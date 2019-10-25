@@ -93,19 +93,19 @@ function longestSubstring(line) {
     let prev_str = '';
     let count = 0;
     let str = '';
-    for (let i = 0; i < line.length; i++) {
-        if (!str.includes(line[i]) || line[i] === ' ') {
-            str += line[i];
+    line.split('').forEach(element => {
+        if (!str.includes(element) || element === ' ') {
+            str += element;
             count++;
         } else {
-            count = str.length - str.indexOf(line[i]);
-            str = str.slice(str.indexOf(line[i]) + 1, str.length) + line[i];
+            count = str.length - str.indexOf(element);
+            str = str.slice(str.indexOf(element) + 1, str.length) + element;
         }
         if (count >= prev_count) {
             prev_count = count;
             prev_str = str;
         }
-    }
+    })
     console.log(prev_str);
 }
 
