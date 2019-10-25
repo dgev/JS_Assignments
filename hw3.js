@@ -186,4 +186,4 @@ function allSubsets(arr) {
     return result;
 }
 
-// console.log(allSubsets([5, 9, 23, 0, -2, -1]));
+console.log(allSubsets([5, 9, 23, 0, -2, -1]));
