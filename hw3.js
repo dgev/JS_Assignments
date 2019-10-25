@@ -23,20 +23,20 @@ function starPattern(n) {
 function frequency(arr) {
     arr.sort();
     let current = arr[0];
-    let count = 1;
+    let count = 0;
     let length = arr.length;
-    for (let i = 1; i < length; i++) {
-        if (arr[i] === current) {
+    arr.forEach( (element, index) => {
+        if (element === current) {
             count++;
         } else {
             console.log(current + ': ' + count / length);
+            current = element;
             count = 1;
-            current = arr[i];
         }
-        if (i === length - 1) {
+        if (index === length - 1) {
             console.log(current + ': ' + count / length);
         }
-    }
+    });
 }
 
 // frequency([1, 1, 2, 2, 3]);
