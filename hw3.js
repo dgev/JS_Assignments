@@ -142,25 +142,22 @@ function productOfNums(arr) {
     let max;
     let noNegative = false;
     let noArrays = false;
-    for (let i = 0; i < arr.length; i++) {
+    arr.forEach(elem => {
         max = 1;
-        if (Array.isArray(arr[i])) {
+        if (Array.isArray(elem)) {
             noArrays = true;
-            for (let j = 0; j < arr[i].length; j++) {
-                if (arr[i][j] < 0) {
-                    max = arr[i][j];
+            elem.forEach((element) => {
+                if (element < 0) {
+                    if (max === 1) {
+                        max = Number.NEGATIVE_INFINITY
+                    };
+                    max = (element > max ? element : max);
                     noNegative = true;
-                    for (let index = j + 1; index < arr[i].length; index++) {
-                        if (arr[i][index] < 0 && arr[i][index] > max) {
-                            max = arr[i][index];
-                        }
-                    }
-                    break;
                 }
-            }
+            });
+            product *= max;
         }
-        product *= max;
-    }
+    });
 
     if (!noArrays)
         console.log('Invalid Argument');
