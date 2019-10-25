@@ -47,13 +47,13 @@ function frequency(arr) {
 function typeOfElems(arr) {
     let count_nums = 0;
     let count_str = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if (typeof (arr[i]) === "number") {
+    arr.forEach(elem => {
+        if (typeof (elem) === "number") {
             count_nums++;
         } else {
             count_str++;
         }
-    }
+    })
     console.log(`Numbers: ${count_nums}
 Strings: ${count_str}`);
 }
