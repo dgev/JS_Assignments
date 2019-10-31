@@ -45,15 +45,14 @@ function minimalPositive(arr) {
     if (arr.length === 1) {
         return (arr[0] >= 0 ? arr[0] : -1);
     }
-    let min1 = minimalPositive([arr[0]]);
-    let min2 = minimalPositive(arr.splice(1, arr.length));
-    if (min1 >= 0 && min2 >= 0) {
-        return (min1 > min2 ? min2 : min1);
+    let min = minimalPositive(arr.splice(1, arr.length));
+    if (arr[0] >= 0 && min >= 0) {
+        return (arr[0] > min ? min : arr[0] );
     }
-    return (min1 < 0 ? (min2 < 0 ? -1 : min2) : min1);
+    return (arr[0] < 0 ? (min < 0 ? -1 : min) : arr[0] );
 }
 
-// console.log(minimalPositive([-5, -9, -111, -1000, -7]));
+// console.log(minimalPositive([56, -9, 87, -23, 0, -105, 55, 1]));
 
 
 // Problem 5
