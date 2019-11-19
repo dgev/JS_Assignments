@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SlideShow</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div id='slideShow'>
+        <div class="dropdown">
+            <button class="menu">Pictures</button>
+            <div class="pictures">
+                <a href="#" onclick="display(1)">Image 1</a>
+                <a href="#" onclick="display(2)">Image 2</a>
+                <a href="#" onclick="display(3)">Image 3</a>
+                <a href="#" onclick="display(4)">Image 4</a>
+                <a href="#" onclick="display(5)">Image 5</a>
+            </div>
+        </div>
+
+        <div id='slide' class="imageFormat">
+            <img id='image' src="pics/1.jpg">
+        </div>
+    </div>
+
+    <div>
+        <button class="buttons" id="play" onclick="start()">play</button>
+        <button class="buttons" id="pause" onclick="pause()">pause</button>
+        <button class="buttons" id="left" onclick="next(-1)">&#8249;</button>
+        <button class="buttons" id="right" onclick="next(1)">&#8250;</button>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
