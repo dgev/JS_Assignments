@@ -12,18 +12,11 @@ function largestProduct(arr) {
 // Problem 2
 
 function countMissing(arr) {
-    let count = 0;
     arr.sort((a, b) => a - b);
-    arr.forEach((elem, i) => {
-        if (i < arr.length - 1) {
-            if (elem + 1 !== arr[i + 1]) {
-                count += arr[i + 1] - elem - 1;
-            }
-        }
-    });
-    return count;
+    return arr[arr.length - 1] - arr[0] + 1 - arr.length;
 }
-// console.log(countMissing([9, 5, 4, -7, -5, 2, 11, 0]));
+
+console.log(countMissing([9, 5, 4, -7, -5, 2, 11, 0]));
 
 
 // Problem 3
@@ -62,18 +55,17 @@ function treeObject(arr) {
             child1 = {};
             child1[arr[i].id] = str;
             parent1 = arr[i].parent;
-        }
-        else if (parent2 === null || parent2 === arr[i].id) {
+        } else if (parent2 === null || parent2 === arr[i].id) {
             let str = JSON.parse(JSON.stringify(child2));
             child2 = {};
             child2[arr[i].id] = str;
             parent2 = arr[i].parent;
 
-        }else if (parent1 === arr[i].parent) {
+        } else if (parent1 === arr[i].parent) {
             let temp = {};
             temp[arr[i].id] = {};
             child1 = Object.assign({}, temp, child1);
-        }else if (parent2 === arr[i].parent) {
+        } else if (parent2 === arr[i].parent) {
             let temp = {};
             temp[arr[i].id] = {};
             child2 = Object.assign({}, temp, child2);
@@ -86,32 +78,32 @@ function treeObject(arr) {
     return obj;
 }
 
-console.log(treeObject([{
-        parent: null,
-        id: 0
-    },
-    {
-        parent: 0,
-        id: 1
-    },
-    {
-        parent: 0,
-        id: 2
-    },
-    {
-        parent: 1,
-        id: 3
-    },
-    {
-        parent: 1,
-        id: 4
-    },
-    {
-        parent: 2,
-        id: 5
-    },
-    {
-        parent: 4,
-        id: 6
-    }
-]));
+// console.log(treeObject([{
+//         parent: null,
+//         id: 0
+//     },
+//     {
+//         parent: 0,
+//         id: 1
+//     },
+//     {
+//         parent: 0,
+//         id: 2
+//     },
+//     {
+//         parent: 1,
+//         id: 3
+//     },
+//     {
+//         parent: 1,
+//         id: 4
+//     },
+//     {
+//         parent: 2,
+//         id: 5
+//     },
+//     {
+//         parent: 4,
+//         id: 6
+//     }
+// ]));
