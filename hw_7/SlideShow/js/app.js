@@ -1,61 +1,46 @@
 let current = 1;
-let rightButton = true;
-let leftButton = false;
 let stop = true;
+let isPlaying = false;
 
 function display(img) {
+    if (img === 6) {
+        img = 1;
+    } else if (img === 0) {
+        img = 5;
+    }
+    current = img;
     let imgSource = `pics/${img}.jpg`;
     document.getElementById("image").src = imgSource;
     document.body.style.backgroundImage = `url(${imgSource}`;
-    showButton(img);
-}
-
-function showButton(current) {
-    if (current === 5) {
-        document.getElementById('right').style.visibility = "hidden";
-        rightButton = false;
-    } else if (current === 1) {
-        document.getElementById('left').style.visibility = "hidden";
-        leftButton = false;
-    } else {
-        if (leftButton === false) {
-            document.getElementById('left').style.visibility = "visible";
-            leftButton = true;
-        }
-        if (rightButton === false) {
-            document.getElementById('right').style.visibility = "visible";
-            rightButton = true;
-        }
-    }
 }
 
 function next(i) {
-    if (current + i <= 5 && current + i >= 1) {
-        current += i;
-        display(current);
-        showButton(current);
+    if (!isPlaying) {
+        if (current + i <= 6 && current + i >= 0) {
+            display(current + i);
+        }
     }
-
 }
-
 
 function play() {
     if (!stop) {
-        if (current < 5) {
-            next(1);
-            setTimeout(play, 2000);
-
-        } else {
-            stop = true;
+        if (current === 5) {
+            current = 0;
         }
+        display(current + 1);
+        setTimeout(play, 2000);
     }
 }
 
 function start() {
-    stop = false;
-    play();
+    if (!isPlaying) {
+        stop = false;
+        isPlaying = true;
+        play();
+    }
 }
 
 function pause() {
     stop = true;
+    isPlaying = false;
 }
