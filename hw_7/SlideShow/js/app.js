@@ -15,10 +15,8 @@ function display(img) {
 }
 
 function next(i) {
-    if (!isPlaying) {
-        if (current + i <= 6 && current + i >= 0) {
+    if (current + i <= 6 && current + i >= 0) {
             display(current + i);
-        }
     }
 }
 
