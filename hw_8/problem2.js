@@ -1,13 +1,14 @@
+let current_id = 0;
+
 class Account {
-    _current_id = 0;
+    #id = current_id++;
     constructor(name, balance) {
-        this._current_id++;
         this.name = name;
         this.balance = balance;
     }
 
     get id() {
-        return this._current_id;
+        return this.#id;
     }
 
     get name() {
@@ -34,7 +35,7 @@ class Account {
     }
 
     credit(amount) {
-        if (isNaN(amount)) {
+        if (isNaN(amount) || amount < 0) {
             return "Inavlid amount!"
         }
         this.balance += amount;
@@ -42,7 +43,10 @@ class Account {
     }
 
     debit(amount) {
-        if (amount < this.balance) {
+        if (amount < 0){
+            return "Invalid input!"
+        }
+        else if (amount < this.balance) {
             this.balance -= amount;
             return true;
         }
@@ -72,7 +76,3 @@ class Account {
         }`
     }
 }
-
-let a1 = new Account("ann", 60);
-let a2 = new Account('john', 0);
-// console.log(a1.id);

@@ -122,14 +122,3 @@ class Book {
 }
 
 
-let author = new Author("kh", "jfl@gmail.com", "female");
-author.name = "new";
-// console.log(author.name);
-let book = new Book("df", author, 12, 11);
-
-// let profit = book.getProfit();
-// console.log(profit);
-// console.log(book.toString());
-
-// let key = book.key();
-
