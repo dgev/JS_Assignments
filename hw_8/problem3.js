@@ -67,12 +67,10 @@ class Person {
 }
 
 class Student extends Person {
-    _programs = ["Mathematics", "English", "Marketing", "Human Rights", "Genocide Studies",
-        "Environmetnal Sciences", "Archaeology", "Law", "History"
-    ]
+    static _programs = ["Mathematics", "English", "Marketing", "Human Rights", "Genocide Studies", "Environmetnal Sciences", "Archaeology", "Law", "History"];
 
-    _exams = [];
-    _passedCourses = false;
+    _exams = new Map();
+    _passed = 0;
     constructor(firstName, lastName, gender, age, program, year, fee) {
         super(firstName, lastName, gender, age);
         this.program = program;
@@ -93,22 +91,36 @@ class Student extends Person {
     }
 
     set program(value) {
-        if (Array.isArray(value) && value.every(element => _programs.includes(element))) {
+        if (Array.isArray(value) && value.every(element => Student._programs.includes(element))) {
             this._program = value;
         }
     }
 
-    set year() {
-
+    set year(value) {
+        let d = new Date();
+        d.setFullYear(value);
+        if (d.getFullYear() == value)
+            this._year = value;
     }
 
-    set fee() {
-
+    set fee(value) {
+        if (isNaN(value) || value < 0) {
+            return "Inavlid amount!"
+        }
+        this._fee = value;
     }
 
     passExam(program, grade) {
 
-        // sif (grade >= 50) 
+        if (grade >= 50) {
+            this._exams.set(program, "passed");
+            this._passed++;
+            if (this._passed === this.program.length) {
+                this.year++;
+            }
+        } else {
+            this._exams.set(program, "fail");
+        }
     }
 
     toString() {
@@ -124,7 +136,7 @@ class Student extends Person {
 }
 
 class Teacher extends Person {
-    _programs = ["Mathematics", "English", "Marketing", "Human Rights", "Genocide Studies",
+    static _programs = ["Mathematics", "English", "Marketing", "Human Rights", "Genocide Studies",
         "Environmetnal Sciences", "Archaeology", "Law", "History"
     ]
 
@@ -143,7 +155,7 @@ class Teacher extends Person {
     }
 
     set program(value) {
-        if (_programs.includes(value)) {
+        if (Teacher._programs.includes(value)) {
             this._program = value;
         } else {
             console.log('Invalid input!');
@@ -153,6 +165,10 @@ class Teacher extends Person {
     }
 
     set salary(value) {
+        if (isNaN(value) || value < 1000) {
+            return "Inavlid amount!"
+        }
+        this._salary = value;
 
     }
 
