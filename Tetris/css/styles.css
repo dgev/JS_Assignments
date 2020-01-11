@@ -1,0 +1,77 @@
+.board {
+  text-align: center;
+}
+
+.header {
+  margin-top: 250px;
+}
+
+.wrapper {
+  width: 300px;
+  display: inline-block;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(221, 221, 221);
+  display: inline-block;
+  outline: 3px solid rgb(221, 221, 221);
+}
+
+.shape {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  outline: 2px solid rgb(221, 221, 221);
+}
+
+.gray {
+  background-color: rgb(221, 221, 221);
+}
+
+.y {
+  background-color: yellow;
+}
+
+.g {
+  background-color: yellowgreen;
+}
+
+.r {
+  background-color: red;
+}
+
+.b {
+  background-color: blue;
+}
+
+.p {
+  background-color: purple;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.play-button {
+  background-color: white;
+  color: black;
+  border: 2px solid #4caf50;
+}
+
+.play-button:hover {
+  background-color: #4caf50;
+  color: white;
+}
